@@ -739,8 +739,7 @@ function PrimarySidebar() {
                                                                                             style={{ paddingLeft: "34px" }}
                                                                                             onClick={(e) => {
                                                                                                 e.stopPropagation();
-                                                                                                console.log("value::", `Slide ${value?.data?.length + 1}`);
-
+                                                                                               
                                                                                                 if (value?.value == "slideshow") {
                                                                                                     handleAddSubSection({
                                                                                                         data: { ...value }, label: `Slide ${value?.data?.find((state) => state?.label == `Slide ${value?.data?.length + 1}`)
