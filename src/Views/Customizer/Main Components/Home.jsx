@@ -390,7 +390,7 @@ function Home() {
                             }
                             {
                                 (item?.value == "image-banner" && item?.isVisible == 0) &&
-                                <div className='w-100 d-grid position-relative' style={{ aspectRatio: item?.imgSize }}>
+                                <div className='w-100 d-grid position-relative py-5' style={{ aspectRatio: item?.imgSize }}>
                                     <div className='w-100 h-100 position-absolute top-0 start-0'>
                                         <img
                                             src={item?.image == "" ? require('../../../Assets/Images/temp-bg.png') : URL.createObjectURL(item?.image)}

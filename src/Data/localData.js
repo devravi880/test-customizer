@@ -58,7 +58,7 @@ const tabList = [
     },
     {
         icon: <IoMdSettings />,
-        label: "Theme Settings",
+        label: "Store Details",
         value: "theme-settings",
     }
 ]
@@ -265,7 +265,7 @@ const sampleTemplateSectionsDropdown = [
         autoPlaySpeed: 2,
         data: [
             {
-                label: "Add Image",
+                label: "Slide 1",
                 image: "",
                 link: "", //category name
                 title: "",
@@ -465,8 +465,8 @@ const tempPrimarySidebar = {
                             max: 1.5,
                             step: 0.1,
                             marks: {
-                                '-0.8': '-0.8',
-                                '-0.9': '-0.9',
+                                0.8: '0.8',
+                                0.9: '0.9',
                                 1.0: '1.0',
                                 1.0: '1.0',
                                 1.1: '1.1',
@@ -501,8 +501,8 @@ const tempPrimarySidebar = {
                             max: 1.5,
                             step: 0.1,
                             marks: {
-                                '-0.8': '-0.8',
-                                '-0.9': '-0.9',
+                                0.8: '0.8',
+                                0.9: '0.9',
                                 1.0: '1.0',
                                 1.1: '1.1',
                                 1.2: '1.2',
@@ -920,7 +920,7 @@ const defaultSections = [
                 autoPlaySpeed: 2,
                 data: [
                     {
-                        label: "Add Image",
+                        label: "Slide 1",
                         image: "",
                         link: "", //category name
                         title: "",

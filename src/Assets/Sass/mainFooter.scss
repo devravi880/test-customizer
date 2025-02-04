@@ -14,16 +14,16 @@
 
 .cust-fd {
     font-size: 14px;
-    color: var(--iconsColor);
+    color: var(--headTextColor);
 
     a {
-        color: var(--iconsColor);
+        color: var(--headTextColor);
         text-decoration: none;
     }
 }
 
 .fd a {
-    color: var(--iconsColor);
+    color: var(--headTextColor);
     font-size: 14px;
     font-weight: 500;
     transition: .3s;

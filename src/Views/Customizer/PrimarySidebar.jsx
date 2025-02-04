@@ -404,7 +404,8 @@ function PrimarySidebar() {
         dispatch(storePrimarySections(newData))
     }
 
-    const handleAddSubSection = ({ data, section }) => {
+    const handleAddSubSection = ({ data, section, label }) => {
+        console.log("label::", label);
 
         const newData = primarySection.map((item) => {
             if (item?.value == section) {
@@ -418,6 +419,7 @@ function PrimarySidebar() {
                                     ...subItem?.data,
                                     {
                                         ...data?.data[0],
+                                        label: label ?? data?.data[0]?.label,
                                         id: generateUniqueId()
                                     }
                                 ]
@@ -737,7 +739,17 @@ function PrimarySidebar() {
                                                                                             style={{ paddingLeft: "34px" }}
                                                                                             onClick={(e) => {
                                                                                                 e.stopPropagation();
-                                                                                                handleAddSubSection({ data: { ...value }, section: item?.value })
+                                                                                                console.log("value::", `Slide ${value?.data?.length + 1}`);
+
+                                                                                                if (value?.value == "slideshow") {
+                                                                                                    handleAddSubSection({
+                                                                                                        data: { ...value }, label: `Slide ${value?.data?.find((state) => state?.label == `Slide ${value?.data?.length + 1}`)
+                                                                                                            ? value?.data?.length + 2
+                                                                                                            : value?.data?.length + 1}`, section: item?.value
+                                                                                                    })
+                                                                                                } else {
+                                                                                                    handleAddSubSection({ data: { ...value }, section: item?.value })
+                                                                                                }
                                                                                             }}
                                                                                         >
                                                                                             <div className="flex-align gap-2 w-100">
@@ -1196,7 +1208,7 @@ function PrimarySidebar() {
                     </Accordion>
                 }
             </div>
-           
+
         </aside >
     )
 }

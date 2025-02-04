@@ -149,7 +149,6 @@ function SecondarySidebar() {
         getCategoryList();
         getProducts();
     }, [])
-    console.log("secondarySidebar::", secondarySidebar);
 
     return (
         <div
@@ -854,7 +853,7 @@ function SecondarySidebar() {
                                                     if (e?.target?.files) {
                                                         handleInput({
                                                             image: e?.target?.files[0] ?? "",
-                                                            label: e?.target?.files[0]?.name,
+                                                            // label: e?.target?.files[0]?.name,
                                                         })
                                                     }
                                                 }}
