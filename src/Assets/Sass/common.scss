@@ -1,0 +1,88 @@
+.custom-see-all-tab {
+    height: 60px;
+}
+
+.custom-password-input {
+    position: relative;
+
+    .custom-eye {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+}
+
+.common-pagination-style {
+    ul {
+        margin: 0px;
+
+        .page-item.disabled {
+            .page-link {
+                background-color: var(--contrastColor);
+                color: var(--pageBgColor);
+            }
+        }
+
+        .page-item {
+            .page-link {
+                color: var(--contrastColor);
+
+                &:active,
+                &:focus {
+                    outline: 0;
+                    box-shadow: 0 0 0 transparent;
+                }
+            }
+
+            &:first-child .page-link {
+                background-color: var(--buttonColor);
+                color: var(--pageBgColor);
+            }
+
+            &:last-child .page-link {
+                background-color: var(--buttonColor);
+                color: var(--pageBgColor);
+            }
+        }
+    }
+}
+
+.custom-bg-temp {
+    background-color: var(--buttonColor);
+    border-color: var(--buttonColor) !important;
+    outline-color: var(--buttonColor) !important;
+
+    &:hover,
+    &:focus {
+        background-color: var(--buttonColor);
+        border-color: var(--buttonColor) !important;
+    outline-color: var(--buttonColor) !important;
+}
+}
+
+.custom-remove-number {
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+.seller-box {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid $borderColor;
+    border-radius: .5rem;
+}
+
+.custom-submit-btn {
+    background-color: var(--buttonColor);
+    border-color: var(--buttonColor);
+
+    &:hover {
+        background-color: var(--contrastColor);
+        border-color: var(--contrastColor);
+    }
+}

@@ -1,0 +1,81 @@
+@mixin flex-gap-one {
+    display: flex;
+    gap: 1rem;
+}
+
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+@mixin flex-align {
+    display: flex;
+    align-items: center;
+}
+
+@mixin flex-between-align {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-start-align {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+@mixin flex-end-align {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+@mixin flex-center-align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin grid-center-align {
+    display: grid;
+    align-content: center;
+    align-items: center;
+}
+
+@mixin lightBtn {
+    background-color: var(--imgBack);
+    color: var(--buttonColor);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+@mixin darkBtn {
+    background-color: var(--buttonColor);
+    color: var(--imgBack);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+@mixin custom-scrollbar {
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: 5px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: darkgray;
+        border-radius: 5px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: black;
+    }
+}

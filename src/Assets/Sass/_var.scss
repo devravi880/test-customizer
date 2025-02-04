@@ -1,0 +1,64 @@
+$borderColor: #e3e4e5;
+
+:root {
+    // Test color
+    --theme-color: #3498db;
+
+    // Theme color
+    --layoutBgColor: #F8F9FA;
+    --pageBgColor: white;
+    --iconsColor: black;
+    --iconsTextColor: white;
+    --headTextColor: black;
+    --bodyTextColor: black;
+    --priceTextColor: black;
+    --buttonColor: black;
+    --contrastColor: blue;
+    --announcementBarBgColor: black;
+    --announcementBarTextColor: white;
+    --announcementBarNavsColor: white;
+
+    // Common color
+    --sellerColor: grey;
+    --imgBack: #EEEEEE;
+
+    // Font Family
+    --headingsFontFamily: system-ui, sans-serif;
+    --bodyFontFamily: system-ui, sans-serif;
+
+    // Font Size
+    --headingsFontSize: 1;
+    --bodyFontSize: 1;
+
+    // Border
+    --buttonBorderWidth: 1px;
+    --buttonBorderStyle: solid;
+    --buttonBorderRadius: 0px;
+    --buttonBorderColor: var(--buttonColor);
+    --buttonConstrastBorderColor: var(--buttonColor);
+
+    // button box shadow
+    --buttonBoxShadowX: 0px;
+    --buttonBoxShadowY: 0px;
+    --buttonBoxShadowBlur: 0px;
+    --buttonBoxShadowColor: var(--buttonColor);
+
+    // Product text align
+    --productTextAlign: left;
+
+    // Product image border 
+    --productImagePadding: 0px;
+    --productImageBorderRadius: 8px;
+
+    // Product border
+    --productBorderWidth: 1px;
+    --productBorderStyle: solid;
+    --productBorderRadius: 0px;
+    --productBorderColor: var(--buttonColor);
+
+    // Product box shadow
+    --productBoxShadowX: 0px;
+    --productBoxShadowY: 0px;
+    --productBoxShadowBlur: 0px;
+    --productBoxShadowColor: var(--buttonColor);
+}
