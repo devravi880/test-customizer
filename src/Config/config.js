@@ -1,6 +1,7 @@
 // const SERVER_URL = (window?.location?.hostname === 'app.printfuse.in') ? "https://api.printfuse.in/" : "http://192.168.0.141:4000/"
 const SERVER_URL = (window?.location?.hostname === 'app.printfuse.in') ? "https://api.printfuse.in/" : "https://api.printfuse.in/"
 const STORE_API_URL = `${SERVER_URL}customizer/`;
+const STORE_API_URL_SELLER = `${SERVER_URL}seller/`;
 
 const frontEnd_API = {
     verify: `${STORE_API_URL}home/verify`,
@@ -10,6 +11,11 @@ const frontEnd_API = {
     getSocialLinks: `${STORE_API_URL}social`,
     socialLinksSubmit: `${STORE_API_URL}social/submit`,
     updateStore: `${STORE_API_URL}store`,
+}
+
+const frontEnd_API_seller = {
+    storecustomize: `${STORE_API_URL_SELLER}storecustomize`,
+    storecustomize: `${STORE_API_URL_SELLER}storecustomize`,
 }
 
 const storage = {
@@ -75,4 +81,5 @@ export {
     headerImage,
     storage,
     siteConfig,
+    frontEnd_API_seller,
 };

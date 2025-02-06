@@ -80,7 +80,7 @@ function Index() {
     }, [headerSlice])
 
     useEffect(() => {
-        const colorPalette = primarySideBar?.data
+        const colorPalette = primarySideBar?.data;
 
         if (colorPalette) {
             colorPalette.map((item) => {

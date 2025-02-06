@@ -13,19 +13,87 @@ import { pagesList, sizesList } from '../../Data/localData';
 import { useDispatch, useSelector } from 'react-redux';
 import { storeHeader, updatePageHeader, updateSizeHeader } from '../../Store/Slices/Customizer/headerSlice';
 import { storeSecondarySideBar } from '../../Store/Slices/Customizer/secondarySideBarSlice';
+import axios from 'axios';
+import { frontEnd_API, frontEnd_API_seller, header } from '../../Config/config';
+import { storePrimarySections } from '../../Store/Slices/Customizer/primarySectionsSlice';
+import { storePrimarySideBar } from '../../Store/Slices/Customizer/primarySideBarSlice';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 function Header() {
 
-    const header = useSelector((state) => state.header.value);
+    const headerData = useSelector((state) => state.header.value);
     const secondarySideBar = useSelector((state) => state.secondarySideBar.value);
-    const [activePage, setActivePage] = useState(header.find((item) => item?.title == "activePage"));
-    const [activeSize, setActiveSize] = useState(header.find((item) => item?.title == "screenSize"));
+    const getPrimarySections = useSelector((state) => state.primarySections.value);
+    const getPrimarySideBar = useSelector((state) => state.primarySideBar.value);
+    const [activePage, setActivePage] = useState(headerData.find((item) => item?.title == "activePage"));
+    const [activeSize, setActiveSize] = useState(headerData.find((item) => item?.title == "screenSize"));
+    const [storeData, setStoreData] = useState(false);
     const dispatch = useDispatch();
 
+    const getStoreData = async () => {
+        try {
+            const { data } = await axios.get(frontEnd_API_seller?.storecustomize, header)
+            if (data?.data) {
+                console.log("data::", data);
+                dispatch(storePrimarySections(data?.data?.customizeData.find(state => state?.value == "sections")?.data))
+                dispatch(storePrimarySideBar({
+                    ...data?.data?.customizeData.find(state => state?.value == "colorPalatte"),
+                    value: "color-palatte"
+                }))
+                setStoreData(true);
+            } else {
+                setStoreData(false);
+            }
+        } catch (err) {
+            setStoreData(false);
+            console.error("err::", err);
+        }
+    }
+
     useEffect(() => {
-        setActivePage(header.find((item) => item?.title == "activePage"));
-        setActiveSize(header.find((item) => item?.title == "screenSize"));
-    }, [header])
+        getStoreData();
+    }, [])
+
+    useEffect(() => {
+        setActivePage(headerData.find((item) => item?.title == "activePage"));
+        setActiveSize(headerData.find((item) => item?.title == "screenSize"));
+    }, [headerData])
+
+    // useEffect(() => {
+    //     console.log("getPrimarySideBar::", getPrimarySideBar);
+    // }, [getPrimarySideBar])
+    console.log("getPrimarySections::", getPrimarySections);
+    console.log("getPrimarySideBar::", getPrimarySideBar);
+
+    const handleSave = async () => {
+        try {
+            const actionType = storeData ? "put" : "post";
+            const bodyData = {
+                customizeData: [
+                    {
+                        label: "Sections",
+                        value: "sections",
+                        data: [...getPrimarySections]
+                    },
+                    {
+                        label: "Color Palatte",
+                        value: "colorPalatte",
+                        data: [...getPrimarySideBar?.data]
+                    },
+                ]
+            }
+            const { data } = await axios[actionType](frontEnd_API_seller?.storecustomize, bodyData, header);
+            console.log("data::", data);
+
+            toast.success(`Store data ${storeData ? "updated" : "saved"} successfully!`, {
+                position: "top-center", // Centers the toast at the top
+            });
+            getStoreData();
+        } catch (error) {
+            console.error("error::", error);
+        }
+    }
 
 
     return (
@@ -103,7 +171,15 @@ function Header() {
                     </button>
                     <Tooltip id="GrRedo" place='bottom' className="header-controls-tooltip" />
                 </div>
-                <Button variant='dark' className='header-controls-save-btn py-1 px-3 fs-14 fw-bold ls-half' data-tooltip-id="BtnSave" data-tooltip-content="save">
+
+                {/* save button */}
+                <Button
+                    variant='dark'
+                    className='header-controls-save-btn py-1 px-3 fs-14 fw-bold ls-half'
+                    data-tooltip-id="BtnSave"
+                    data-tooltip-content="save"
+                    onClick={() => { handleSave() }}
+                >
                     Save
                 </Button>
                 <Tooltip id="BtnSave" place='bottom' className="header-controls-tooltip" />

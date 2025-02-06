@@ -186,8 +186,6 @@ function Home() {
             {
                 primarySections?.length > 0 &&
                 primarySections.map((item, index) => {
-
-                    // const productListData = getProductsList(item?.type, 4);
                     const tempCheck = item?.type == "" ? "all" : item?.type;
                     const productListData = ((tempCheck) in productList) ? productList[tempCheck] : [];
 
@@ -202,6 +200,7 @@ function Home() {
                                         className='half-border-rad overflow-hidden'
                                         fade={item?.animationType == "fade" ? true : false}
                                         slide={(item?.animationType == "slide" || item?.animationType == "fade") ? true : false}
+                                        controls={item?.data.filter((state) => state?.isVisible !== 1)?.length > 1 ? true : false}
                                     >
                                         {
                                             item?.data?.length > 0 &&
