@@ -47,8 +47,6 @@ function Index() {
 
                 } else {
 
-                    console.log("window.location.pathname::", window.location.pathname);
-
                     if (window.location.pathname.startsWith("/customize-store")) {
                         navigate("/")
                     }
@@ -75,11 +73,6 @@ function Index() {
     };
 
     useEffect(() => {
-        const findSize = headerSlice?.find((item) => item?.title == "screenSize")?.value;
-        setHeaderData(findSize);
-    }, [headerSlice])
-
-    useEffect(() => {
         const colorPalette = primarySideBar?.data;
 
         if (colorPalette) {
@@ -95,6 +88,11 @@ function Index() {
         }
 
     }, [primarySideBar])
+
+    useEffect(() => {
+        const findSize = headerSlice?.find((item) => item?.title == "screenSize")?.value;
+        setHeaderData(findSize);
+    }, [headerSlice])
 
     // useEffect(() => {
     //     // Set the initial state based on the current window width

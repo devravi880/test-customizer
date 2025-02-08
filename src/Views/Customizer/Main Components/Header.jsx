@@ -216,7 +216,7 @@ function Header() {
                             {
                                 (item?.value == "announcement-bar" && item?.type == "slides" && item?.isVisible == 0) &&
                                 <div className='announcement-bar'>
-                                    <Container>
+                                    <Container style={{padding: "0px 36px"}}>
                                         <div className="slider-container">
                                             <Slider {...settings}>
                                                 {

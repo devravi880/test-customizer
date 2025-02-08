@@ -11,11 +11,12 @@ const frontEnd_API = {
     getSocialLinks: `${STORE_API_URL}social`,
     socialLinksSubmit: `${STORE_API_URL}social/submit`,
     updateStore: `${STORE_API_URL}store`,
+    updateStore: `${STORE_API_URL}document`,
 }
 
 const frontEnd_API_seller = {
     storecustomize: `${STORE_API_URL_SELLER}storecustomize`,
-    storecustomize: `${STORE_API_URL_SELLER}storecustomize`,
+    storeDocument: `${STORE_API_URL_SELLER}storecustomize/document`,
 }
 
 const storage = {

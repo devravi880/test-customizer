@@ -219,7 +219,7 @@ function Home() {
                                                                 }}
                                                             >
                                                                 <img
-                                                                    src={subItem?.image == "" ? require('../../../Assets/Images/temp-bg.png') : URL.createObjectURL(subItem?.image)}
+                                                                    src={subItem?.image == "" ? require('../../../Assets/Images/temp-bg.png') : subItem?.image}
                                                                     alt={subItem?.title}
                                                                 />
                                                             </Link>
@@ -392,7 +392,7 @@ function Home() {
                                 <div className='w-100 d-grid position-relative py-5' style={{ aspectRatio: item?.imgSize }}>
                                     <div className='w-100 h-100 position-absolute top-0 start-0'>
                                         <img
-                                            src={item?.image == "" ? require('../../../Assets/Images/temp-bg.png') : URL.createObjectURL(item?.image)}
+                                            src={item?.image == "" ? require('../../../Assets/Images/temp-bg.png') : item?.image}
                                             className='w-100 h-100 object-cover'
                                             alt={item?.title}
                                         />
@@ -431,7 +431,7 @@ function Home() {
                                         <Col className={`${headerData == "mobile" ? 'col-12' : 'col-12 col-lg-6'} `}>
                                             <div className='w-100 aspect-4-3 full-border-rad overflow-hidden border border-secondary-subtle'>
                                                 <img
-                                                    src={item?.image == "" ? require('../../../Assets/Images/temp-bg.png') : URL.createObjectURL(item?.image)}
+                                                    src={item?.image == "" ? require('../../../Assets/Images/temp-bg.png') : item?.image}
                                                     className='w-100 h-100 object-cover'
                                                     alt={item?.title}
                                                 />
@@ -464,7 +464,7 @@ function Home() {
                                 <Container>
                                     <div className={`w-100 half-border-rad overflow-hidden`} style={{ aspectRatio: item?.type }}>
                                         <video controls autoPlay muted loop className='w-100 h-100 object-cover'>
-                                            <source src={item?.video === "" ? require('../../../Assets/Videos/sample video.mp4') : URL.createObjectURL(item?.video)} type="video/mp4" />
+                                            <source src={item?.video === "" ? require('../../../Assets/Videos/sample video.mp4') : item?.video} type="video/mp4" />
                                             Your browser does not support the video tag.
                                         </video>
                                     </div>

@@ -128,11 +128,11 @@ function Footer() {
                                             <Col className={`${headerData == "mobile" ? 'col-12' : 'col-12 col-lg-3'}  p-2 d-grid align-content-start gap-3`}>
                                                 {/* <span class="text-end">{storeData?.shortDescription}</span> */}
                                                 <div className={`flex-between-align gap-2 ${headerData == "mobile" ? 'justify-content-center' : 'justify-content-center justify-content-lg-end'} `}>
-                                                    <FaGooglePay className='semi-border p-1 bg-light' style={{ fontSize: "40px" }} />
-                                                    <SiRazorpay className='semi-border p-1 bg-light' style={{ fontSize: "40px" }} />
-                                                    <RiVisaLine className='semi-border p-1 bg-light' style={{ fontSize: "40px" }} />
-                                                    <RiMastercardFill className='semi-border p-1 bg-light' style={{ fontSize: "40px" }} />
-                                                    <FaApplePay className='semi-border p-1 bg-light' style={{ fontSize: "40px" }} />
+                                                    <FaGooglePay className='p-1 bg-light' style={{ fontSize: "40px" }} />
+                                                    <SiRazorpay className='p-1 bg-light' style={{ fontSize: "40px" }} />
+                                                    <RiVisaLine className='p-1 bg-light' style={{ fontSize: "40px" }} />
+                                                    <RiMastercardFill className='p-1 bg-light' style={{ fontSize: "40px" }} />
+                                                    <FaApplePay className='p-1 bg-light' style={{ fontSize: "40px" }} />
                                                 </div>
                                                 {
                                                     storeData?.expired &&
@@ -163,7 +163,7 @@ function Footer() {
                             {
                                 (item?.value == "announcement-bar" && item?.type == "slides" && item?.isVisible == 0) &&
                                 <div className='announcement-bar'>
-                                    <Container>
+                                    <Container style={{ padding: "0px 36px" }}>
                                         <div className="slider-container">
                                             <Slider {...settings}>
                                                 {

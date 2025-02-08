@@ -35,7 +35,6 @@ function Header() {
         try {
             const { data } = await axios.get(frontEnd_API_seller?.storecustomize, header)
             if (data?.data) {
-                console.log("data::", data);
                 dispatch(storePrimarySections(data?.data?.customizeData.find(state => state?.value == "sections")?.data))
                 dispatch(storePrimarySideBar({
                     ...data?.data?.customizeData.find(state => state?.value == "colorPalatte"),
@@ -59,12 +58,6 @@ function Header() {
         setActivePage(headerData.find((item) => item?.title == "activePage"));
         setActiveSize(headerData.find((item) => item?.title == "screenSize"));
     }, [headerData])
-
-    // useEffect(() => {
-    //     console.log("getPrimarySideBar::", getPrimarySideBar);
-    // }, [getPrimarySideBar])
-    console.log("getPrimarySections::", getPrimarySections);
-    console.log("getPrimarySideBar::", getPrimarySideBar);
 
     const handleSave = async () => {
         try {

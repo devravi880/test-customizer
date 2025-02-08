@@ -345,15 +345,15 @@ const sampleTemplateSectionsDropdown = [
         paddingBottom: 16,
         data: []
     },
-    {
-        label: "Video",
-        value: "video",
-        video: "",
-        type: "4/2", // 5/2 4/2 4/3
-        isVisible: 0,
-        isDeletable: 0,
-        data: []
-    },
+    // {
+    //     label: "Video",
+    //     value: "video",
+    //     video: "",
+    //     type: "4/2", // 5/2 4/2 4/3
+    //     isVisible: 0,
+    //     isDeletable: 0,
+    //     data: []
+    // },
 ]
 
 const tempPrimarySidebar = {

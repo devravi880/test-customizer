@@ -5,10 +5,11 @@ import { storeSecondarySideBar } from '../../Store/Slices/Customizer/secondarySi
 import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import { storePrimarySections } from '../../Store/Slices/Customizer/primarySectionsSlice';
 import axios from 'axios';
-import { frontEnd_API, header } from '../../Config/config';
+import { frontEnd_API, frontEnd_API_seller, header, headerImage } from '../../Config/config';
 import { ButtonList, Input, RangeSlider, RangeSliderCustom, Textarea } from '../../Components/Customizer/TypeBase';
 import { sliderMarks } from '../../Data/localData';
 import { MdModeEdit } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 function SecondarySidebar() {
     const secondarySidebar = useSelector((state) => state.secondarySideBar.value);
@@ -74,6 +75,63 @@ function SecondarySidebar() {
         dispatch(storeSecondarySideBar(newData))
     }
 
+    const handleImageInput = async (item) => {
+        if (item) {
+            try {
+                const { data } = await axios.put(frontEnd_API_seller.storeDocument, { ...item }, headerImage)
+                console.log("data?.data::", data?.data);
+                if (data?.data) {
+                    handleInput({
+                        image: data?.data?.url
+                    })
+                }
+            } catch (error) {
+                console.error("error::", error);
+            }
+
+        } else {
+            toast.warning("Select document to upload!")
+        }
+    }
+
+    const handleMainImageInput = async (item) => {
+        if (item) {
+            try {
+                const { data } = await axios.put(frontEnd_API_seller.storeDocument, { ...item }, headerImage)
+                console.log("data?.data::", data?.data);
+                if (data?.data) {
+                    handleMainInput({
+                        image: data?.data?.url
+                    })
+                }
+            } catch (error) {
+                console.error("error::", error);
+            }
+
+        } else {
+            toast.warning("Select document to upload!")
+        }
+    }
+
+    const handleMainVideoInput = async (item) => {
+        if (item) {
+            try {
+                const { data } = await axios.put(frontEnd_API_seller.storeDocument, { ...item }, headerImage)
+                console.log("data?.data::", data?.data);
+                if (data?.data) {
+                    handleMainInput({
+                        video: data?.data?.url
+                    })
+                }
+            } catch (error) {
+                console.error("error::", error);
+            }
+
+        } else {
+            toast.warning("Select document to upload!")
+        }
+    }
+
     const handleMainInput = (data) => {
         const newData = {
             ...secondarySidebar,
@@ -97,10 +155,6 @@ function SecondarySidebar() {
                     ...peraItem,
                     data: peraItem?.data?.map((item) => {
                         if (item?.label == secondarySidebar?.data?.data?.label) {
-                            console.log("peraItem::", {
-                                ...item,
-                                ...secondarySidebar?.data?.data
-                            });
                             return {
                                 ...item,
                                 ...secondarySidebar?.data?.data
@@ -116,7 +170,6 @@ function SecondarySidebar() {
         })
 
         dispatch(storePrimarySections([...newData]))
-        console.log("secondarySidebar::", secondarySidebar);
 
     }, [secondarySidebar])
 
@@ -138,7 +191,6 @@ function SecondarySidebar() {
             }, header)
 
             setProductList(data?.data);
-            console.log("data::", data?.data);
         }
         catch (e) {
             console.log("e::", e);
@@ -479,7 +531,7 @@ function SecondarySidebar() {
                                     {
                                         (secondarySidebar?.data?.data?.image !== "")
                                             ? <div className='custom-img'>
-                                                <img src={URL.createObjectURL(secondarySidebar?.data?.data?.image)} alt="" />
+                                                <img src={secondarySidebar?.data?.data?.image} alt="" />
                                             </div> :
                                             <div className='custom-img'>
                                                 <i className="bi bi-image fs-40" />
@@ -488,15 +540,12 @@ function SecondarySidebar() {
                                 </label>
                                 <input
                                     type="file"
-                                    // value={storeData?.logo}
                                     name='logo'
                                     id='logo'
-                                    // className={(err?.logo && !storeData?.logo) && 'border-red'}
                                     onChange={(e) => {
-                                        // handleInputChange({ name: 'logo', file: e.target.files[0] });
-                                        // setNewLogo(e.target.files[0])
-                                        handleMainInput({
-                                            image: e.target.files[0]
+                                        handleMainImageInput({
+                                            document: e.target.files[0],
+                                            oldUrl: secondarySidebar?.data?.data?.image
                                         })
                                     }}
                                     accept=".png, .jpg, .jpeg, .webp, .svg"
@@ -646,7 +695,7 @@ function SecondarySidebar() {
                                     {
                                         (secondarySidebar?.data?.data?.image !== "")
                                             ? <div className='custom-img'>
-                                                <img src={URL.createObjectURL(secondarySidebar?.data?.data?.image)} alt="" />
+                                                <img src={secondarySidebar?.data?.data?.image} alt="" />
                                             </div> :
                                             <div className='custom-img'>
                                                 <i className="bi bi-image fs-40" />
@@ -659,8 +708,9 @@ function SecondarySidebar() {
                                     id='logo'
                                     onChange={(e) => {
                                         if (e?.target?.files) {
-                                            handleMainInput({
-                                                image: e?.target?.files[0] ?? "",
+                                            handleMainImageInput({
+                                                document: e.target.files[0],
+                                                oldUrl: secondarySidebar?.data?.data?.image
                                             })
                                         }
                                     }}
@@ -838,7 +888,7 @@ function SecondarySidebar() {
                                                 {
                                                     (secondarySidebar?.data?.subData?.image && (secondarySidebar?.data?.subData?.image !== ""))
                                                         ? <div className='custom-img'>
-                                                            <img src={URL.createObjectURL(secondarySidebar?.data?.subData?.image)} alt="" />
+                                                            <img src={secondarySidebar?.data?.subData?.image} alt="" />
                                                         </div> :
                                                         <div className='custom-img'>
                                                             <i className="bi bi-image fs-40" />
@@ -851,9 +901,9 @@ function SecondarySidebar() {
                                                 id='logo'
                                                 onChange={(e) => {
                                                     if (e?.target?.files) {
-                                                        handleInput({
-                                                            image: e?.target?.files[0] ?? "",
-                                                            // label: e?.target?.files[0]?.name,
+                                                        handleImageInput({
+                                                            document: e?.target?.files[0] ?? "",
+                                                            oldUrl: secondarySidebar?.data?.subData?.image
                                                         })
                                                     }
                                                 }}
@@ -876,8 +926,6 @@ function SecondarySidebar() {
                                                 <option value={""}>Select collection</option>
                                                 {
                                                     categoryList?.map((item, index) => {
-                                                        console.log("item::", item);
-
                                                         return (
                                                             <option value={item?.categoryName} key={index}>{item?.categoryName}</option>
                                                         )
@@ -1032,9 +1080,8 @@ function SecondarySidebar() {
                                     (secondarySidebar?.data?.data?.video && (secondarySidebar?.data?.data?.video !== ""))
                                         ? <div className='d-flex align-items-start gap-2'>
                                             <div className='custom-img'>
-                                                {/* <img src={URL.createObjectURL(secondarySidebar?.data?.data?.video)} alt="" /> */}
                                                 <video autoPlay muted loop className='w-100 h-100 object-cover'>
-                                                    <source src={URL.createObjectURL(secondarySidebar?.data?.data?.video)} type="video/mp4" />
+                                                    <source src={secondarySidebar?.data?.data?.video} type="video/mp4" />
                                                     Your browser does not support the video tag.
                                                 </video>
                                             </div>
@@ -1051,8 +1098,9 @@ function SecondarySidebar() {
                                 id='logo'
                                 onChange={(e) => {
                                     if (e?.target?.files) {
-                                        handleMainInput({
-                                            video: e?.target?.files[0] ?? "",
+                                        handleMainVideoInput({
+                                            document: e.target.files[0],
+                                            oldUrl: secondarySidebar?.data?.data?.image
                                         })
                                     }
                                 }}

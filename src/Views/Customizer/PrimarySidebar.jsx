@@ -220,7 +220,6 @@ function PrimarySidebar() {
                     return { ...item }
                 }
             })
-            console.log("data?.data::", data?.data);
             setsocialLinksList([...newData]);
         } catch (error) {
             console.error("error::", error);

@@ -436,6 +436,12 @@
             font-size: calc(16px * var(--bodyFontSize));
             color: var(--bodyTextColor);
 
+            .bg-light {
+                background-color: rgba(255, 255, 255, 0.5) !important;
+                border-radius: .25rem;
+                color: var(--headTextColor);
+            }
+
             h1,
             .h1,
             h2,
