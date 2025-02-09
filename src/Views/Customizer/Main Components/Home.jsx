@@ -363,7 +363,7 @@ function Home() {
                                                     }
 
                                                 </>
-                                                : <h1 className='text-center'>Products not found</h1>
+                                                : <h1 className='text-center w-100'>Products not found</h1>
                                         }
                                     </Row>
                                 </Container>

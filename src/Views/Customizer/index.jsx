@@ -10,6 +10,7 @@ import PrimaryAuxSidebar from './PrimaryAuxSidebar';
 import PrimarySidebar from './PrimarySidebar';
 import Main from './Main';
 import SecondarySidebar from './SecondarySidebar';
+import { toast } from 'react-toastify';
 
 function Index() {
 
@@ -19,8 +20,10 @@ function Index() {
     const primaryAuxSideBar = useSelector((state) => state.primaryAuxSideBar.value);
     const primarySideBar = useSelector((state) => state.primarySideBar.value);
     const headerSlice = useSelector((state) => state.header.value);
+    const storeSlice = useSelector((state) => state.store.value);
     const [headerData, setHeaderData] = useState(headerSlice?.find((item) => item?.title == "screenSize")?.value);
     const defaultStoreCode = "be1e0c67-741b-46e3-ba46-0ae72ccc4afe";
+    // const defaultStoreCode = "";
     const storeCurrentStatus = storeCode?.length > 0 ? 1 : 0;
 
     const [secondarySidebar, setSecondarySidebar] = useState({
@@ -45,7 +48,6 @@ function Index() {
                     }, 750);
 
                 } else {
-
                     if (window.location.pathname.startsWith("/customize-store")) {
                         navigate("/")
                     }
@@ -59,7 +61,16 @@ function Index() {
     // -----
 
     useEffect(() => {
-        verifySnapStore();
+        if (params?.storeCode !== undefined) {
+            verifySnapStore();
+        } else {
+            if (!storeSlice) {
+                toast.error("Invalid Routes!")
+                setTimeout(() => {
+                    window.location = `https://app.printfuse.in/`
+                }, 2500);
+            }
+        }
     }, []);
 
     const changeCSSVariable = (data) => {

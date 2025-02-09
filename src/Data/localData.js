@@ -909,28 +909,28 @@ const defaultSections = [
         label: "Template",
         value: "template",
         data: [
-            {
-                label: "Slideshow",
-                value: "slideshow",
-                type: "md", // sm / md / lg
-                // paginationType: "counter", // dots / counter / numbers
-                animationType: "slide", // none / slide / fade
-                isVisible: 0,
-                isDeletable: 0,
-                isAutoPlay: 1,
-                autoPlaySpeed: 2,
-                data: [
-                    {
-                        label: "Slide 1",
-                        image: "",
-                        link: "", //category name
-                        title: "",
-                        description: "",
-                        isVisible: 0,
-                        isDeletable: 0,
-                    }
-                ]
-            },
+            // {
+            //     label: "Slideshow",
+            //     value: "slideshow",
+            //     type: "md", // sm / md / lg
+            //     // paginationType: "counter", // dots / counter / numbers
+            //     animationType: "slide", // none / slide / fade
+            //     isVisible: 0,
+            //     isDeletable: 0,
+            //     isAutoPlay: 1,
+            //     autoPlaySpeed: 2,
+            //     data: [
+            //         {
+            //             label: "Slide 1",
+            //             image: "",
+            //             link: "", //category name
+            //             title: "",
+            //             description: "",
+            //             isVisible: 0,
+            //             isDeletable: 0,
+            //         }
+            //     ]
+            // },
             {
                 label: "Featured collection",
                 value: "featured-collection",
