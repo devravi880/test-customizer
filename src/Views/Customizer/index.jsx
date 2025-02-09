@@ -38,9 +38,8 @@ function Index() {
 
                 if (storeCode?.length <= 0 || storeCode != (params?.storeCode ?? defaultStoreCode)) {
 
-
                     setTimeout(() => {
-                        window.location = ["localhost", "192.168.0.140"].includes(window.location.hostname)
+                        window.location = ["localhost", "192.168.1.10"].includes(window.location.hostname)
                             ? `http://localhost:${window?.location?.port}/`
                             : `https://${window.location.hostname}/`;
                     }, 750);
