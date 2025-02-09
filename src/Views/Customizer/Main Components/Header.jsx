@@ -4,7 +4,7 @@ import { CgShoppingBag } from 'react-icons/cg';
 import { LuCircleUser } from 'react-icons/lu';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { frontEnd_API, header, SERVER_URL } from '../../../Config/config';
+import { frontEnd_API, header, SERVER_URL, siteConfig } from '../../../Config/config';
 import axios from 'axios';
 import { pagesList } from '../../../Data/localData';
 import { updatePageHeader } from '../../../Store/Slices/Customizer/headerSlice';
@@ -92,7 +92,7 @@ function Header() {
                                                     }}
                                                 >
                                                     {
-                                                        <img src={storeData?.logo} alt="" />
+                                                        <img src={storeData?.logo ?? siteConfig?.logo } alt="" />
                                                     }
                                                 </Link>
                                                 <h3 className='m-0'>
@@ -203,7 +203,7 @@ function Header() {
                                 <marquee behavior="" direction="" className="announcement-bar py-1">
                                     {
                                         item?.data?.length > 0 &&
-                                        item?.data.filter((state)=>state?.isVisible == 0).map((tempItem, tempIndex) => {
+                                        item?.data.filter((state) => state?.isVisible == 0).map((tempItem, tempIndex) => {
                                             return (
                                                 <span key={tempIndex} className='w-100 px-5'>
                                                     {tempItem?.label}
@@ -216,7 +216,7 @@ function Header() {
                             {
                                 (item?.value == "announcement-bar" && item?.type == "slides" && item?.isVisible == 0) &&
                                 <div className='announcement-bar'>
-                                    <Container style={{padding: "0px 36px"}}>
+                                    <Container style={{ padding: "0px 36px" }}>
                                         <div className="slider-container">
                                             <Slider {...settings}>
                                                 {
