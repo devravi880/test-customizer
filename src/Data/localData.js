@@ -278,13 +278,14 @@ const sampleTemplateSectionsDropdown = [
     {
         label: "Featured collection",
         value: "featured-collection",
-        type: "Mens clothing", // category name
+        type: "", // category name
         isVisible: 0,
         isDeletable: 0,
         title: "Featured collection",
         description: "",
         desktopItems: 4,
         mobileItems: 2,
+        firstButtonText: "Explore More",
         data: []
     },
     {
@@ -940,6 +941,7 @@ const defaultSections = [
                 description: "",
                 desktopItems: 4,
                 mobileItems: 2,
+                firstButtonText: "Explore More",
                 data: []
             }
         ]

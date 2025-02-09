@@ -379,6 +379,15 @@ function SecondarySidebar() {
                                     <option value={4}>4</option>
                                 </select>
                             </label>
+                            <Input
+                                data={{
+                                    title: "Button Text",
+                                    label: "firstButtonText",
+                                    placeholder: "Enter button text",
+                                    value: secondarySidebar?.data?.data?.firstButtonText
+                                }}
+                                onChange={(e) => { handleMainInput({ [e.label]: e?.value }) }}
+                            />
                         </div>
                     </>
                 }

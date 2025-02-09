@@ -127,6 +127,13 @@ function Home() {
         }
     }, [primarySections, headerData])
 
+    const handleRedirect = (item) => {
+        if (item) {
+            const kebabCaseStr = item.toLowerCase().replace(/-/g, '~').replace(/\s+/g, '-');
+            return kebabCaseStr;
+        }
+    };
+
     return (
         <div className='custom-home-style pt-2'>
             {/* Grid View Banner */}
@@ -338,10 +345,19 @@ function Home() {
                                                     })}
 
                                                     {
-                                                        (totalCount > 12) &&
-                                                        <div className='flex-center-align w-100 pt-3 finalCheckOutBtn' data-aos="fade-up" data-aos-delay="0" data-aos-duration="500">
-                                                            <Link variant='success' className={`fw-semibold half-border-rad ${headerData == "mobile" ? 'fs-10' : 'fs-14 fs-sm-10'}`}>
-                                                                Explore More
+                                                        item?.firstButtonText &&
+                                                        <div className='flex-center-align w-100 py-2' data-aos="fade-up" data-aos-delay="0" data-aos-duration="500">
+                                                            <Link
+                                                                variant='success'
+                                                                className={`fw-semibold custom-rich-btn-first ${headerData == "mobile" ? 'fs-10' : 'fs-14 fs-sm-10'}`}
+                                                                onClick={() => {
+                                                                    dispatch(updatePageHeader({
+                                                                        ...categoryPageData,
+                                                                        apiValue: item?.type
+                                                                    }))
+                                                                }}
+                                                            >
+                                                                {item?.firstButtonText}
                                                             </Link>
                                                         </div>
                                                     }
