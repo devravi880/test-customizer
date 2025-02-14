@@ -11,6 +11,7 @@ import PrimarySidebar from './PrimarySidebar';
 import Main from './Main';
 import SecondarySidebar from './SecondarySidebar';
 import { toast } from 'react-toastify';
+import NotFoundPage from '../../Components/NotFoundPage';
 
 function Index() {
 
@@ -24,7 +25,9 @@ function Index() {
     const [headerData, setHeaderData] = useState(headerSlice?.find((item) => item?.title == "screenSize")?.value);
     const defaultStoreCode = "be1e0c67-741b-46e3-ba46-0ae72ccc4afe";
     // const defaultStoreCode = "";
-    const storeCurrentStatus = storeCode?.length > 0 ? 1 : 0;
+    // const storeCurrentStatus = storeCode?.length > 0 ? 1 : 0;
+    const [isTokenFound, setIsTokenFound] = useState(false);
+    const [loader, setLoader] = useState(true);
 
     const [secondarySidebar, setSecondarySidebar] = useState({
         position: false,
@@ -65,10 +68,15 @@ function Index() {
             verifySnapStore();
         } else {
             if (!storeSlice) {
-                toast.error("Invalid Routes!")
-                setTimeout(() => {
-                    window.location = `https://app.printfuse.in/`
-                }, 2500);
+                setLoader(false);
+                setIsTokenFound(false);
+                // toast.error("Invalid Routes!")
+                // setTimeout(() => {
+                //     window.location = `https://app.printfuse.in/`
+                // }, 2500);
+            } else {
+                setIsTokenFound(true);
+                setLoader(false);
             }
         }
     }, []);
@@ -153,18 +161,20 @@ function Index() {
     return (
         <>
             {
-                (storeCurrentStatus == 0)
+                (loader)
                     ?
                     <Loader />
                     :
-                    (storeCurrentStatus == 1) &&
-                    <div className={`customizer-home ${headerData == "desktop" ? "desktop" : headerData == "mobile" ? "mobile" : headerData == "fullscreen" ? "fullscreen" : "desktop"}`}>
-                        <Header />
-                        <PrimaryAuxSidebar />
-                        <PrimarySidebar />
-                        <Main />
-                        <SecondarySidebar secondarySidebar={secondarySidebar} />
-                    </div >
+                    (isTokenFound) ?
+                        // (storeCurrentStatus == 1) &&
+                        <div className={`customizer-home ${headerData == "desktop" ? "desktop" : headerData == "mobile" ? "mobile" : headerData == "fullscreen" ? "fullscreen" : "desktop"}`}>
+                            <Header />
+                            <PrimaryAuxSidebar />
+                            <PrimarySidebar />
+                            <Main />
+                            <SecondarySidebar secondarySidebar={secondarySidebar} />
+                        </div>
+                        : <NotFoundPage />
             }
         </>
     )

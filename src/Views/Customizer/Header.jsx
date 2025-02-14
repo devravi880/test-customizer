@@ -19,6 +19,7 @@ import { storePrimarySections } from '../../Store/Slices/Customizer/primarySecti
 import { storePrimarySideBar } from '../../Store/Slices/Customizer/primarySideBarSlice';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
+import { removeStore } from '../../Store/Slices/storeSlice';
 
 function Header() {
 
@@ -88,11 +89,16 @@ function Header() {
         }
     }
 
+    const handleExit = () => {
+        dispatch(removeStore());
+        window.location.href = "https://app.printfuse.in/";
+    }
+
 
     return (
         <header className='customizer-home-header' id="header">
             <div className='customizer-home-header-exit px-2'>
-                <Link className='flex-start-align exit-btn'>
+                <Link className='flex-start-align exit-btn' onClick={handleExit}>
                     <IoExitOutline className='exit-icon' />
                     Exit
                 </Link>
